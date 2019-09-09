@@ -17,5 +17,9 @@ jobs:
         echo test, and deploy your project.
     - name: display JHIPSTER_TOTO
       run: echo === $JHIPSTER_TOTO ===
+      env:
+        JHIPSTER_TOTO: ${{ secrets.JHIPSTER_TOTO }}
     - name: clone JHIPSTER_REPO
       run: git clone $JHIPSTER_REPO
+      env:
+        JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
