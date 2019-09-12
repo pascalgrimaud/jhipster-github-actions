@@ -19,15 +19,18 @@ jobs:
       run: echo === $JHIPSTER_TOTO ===
       env:
         JHIPSTER_TOTO: ${{ secrets.JHIPSTER_TOTO }}
-    - name: clone JHIPSTER_REPO
-      run: git clone $JHIPSTER_REPO
-      env:
-        JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
+    # - name: clone JHIPSTER_REPO
+    #   run: git clone $JHIPSTER_REPO
+    #   env:
+    #     JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
     - name: test inside file
       run: |
-        echo "//registry.npmjs.org/:_authToken=$JHIPSTER_REPO" >> ~/.npmrc
-        cat ~/.npmrc
+        echo "git clone $JHIPSTER_REPO" >> ~/toto.sh
+        cat ~/toto.sh
+        chmod +x ~/toto.sh
+        cd ~/
+        ./toto.sh
       env:
         JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
-    - name: test cat npmrc
-      run: cat ~/.npmrc
+    - name: test ls generator-jhipster
+      run: ls -al ~/generator-jhipster/
