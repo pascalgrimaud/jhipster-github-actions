@@ -23,3 +23,11 @@ jobs:
       run: git clone $JHIPSTER_REPO
       env:
         JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
+    - name: test inside file
+      run: |
+        echo "//registry.npmjs.org/:_authToken=$(JHIPSTER_REPO)" >> ~/.npmrc
+        cat ~/.npmrc
+      env:
+        JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
+    - name: test cat npmrc
+      run: cat ~/.npmrc
