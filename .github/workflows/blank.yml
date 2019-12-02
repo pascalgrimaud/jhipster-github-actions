@@ -22,5 +22,6 @@ jobs:
     - name: simple echo
       run: |
         echo $GITHUB_REF
+        echo $GITHUB_REPOSITORY
       env:
         JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
