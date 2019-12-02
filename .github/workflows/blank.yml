@@ -19,18 +19,8 @@ jobs:
       run: echo === $JHIPSTER_TOTO ===
       env:
         JHIPSTER_TOTO: ${{ secrets.JHIPSTER_TOTO }}
-    # - name: clone JHIPSTER_REPO
-    #   run: git clone $JHIPSTER_REPO
-    #   env:
-    #     JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
-    - name: test inside file
+    - name: simple echo
       run: |
-        echo "git clone $JHIPSTER_REPO" >> ~/toto.sh
-        cat ~/toto.sh
-        chmod +x ~/toto.sh
-        cd ~/
-        ./toto.sh
+        echo $GITHUB_REF
       env:
         JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
-    - name: test ls generator-jhipster
-      run: ls -al ~/generator-jhipster/
