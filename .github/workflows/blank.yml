@@ -25,3 +25,7 @@ jobs:
         echo $GITHUB_REPOSITORY
       env:
         JHIPSTER_REPO: ${{ secrets.JHIPSTER_REPO }}
+    - name: toto
+      run: echo $SUPER_SECRET
+      env:
+        SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
