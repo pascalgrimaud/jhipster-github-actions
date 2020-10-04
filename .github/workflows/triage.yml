@@ -12,9 +12,9 @@ jobs:
             const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
             github.issues.listLabelsOnIssue({...issue}).then(response => {
               const labels = response.data
-              const missingLabel = []
-              const missingArea = true
-              const missingTheme = true
+              let missingLabel = []
+              let missingArea = true
+              let missingTheme = true
               for (const label of labels) {
                 if (label.name.includes('area: ')) {
                   missingArea = false
