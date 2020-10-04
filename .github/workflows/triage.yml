@@ -20,8 +20,6 @@ jobs:
                 if (!label.name.includes('theme: ')) {
                   missingLabel.push('theme: undefined')
                 }
-                if (missingLabel.length >= 1) {
-                  github.issues.addLabels({...issue, labels: missingLabel})
-                }
+                github.issues.addLabels({...issue, labels: missingLabel})
               }
             })
