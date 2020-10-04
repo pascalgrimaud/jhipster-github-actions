@@ -12,14 +12,22 @@ jobs:
             const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
             github.issues.listLabelsOnIssue({...issue}).then(response => {
               const labels = response.data
+              const missingLabel = []
+              const missingArea = true
+              const missingTheme = true
               for (const label of labels) {
-                const missingLabel = []
-                if (!label.name.includes('area: ')) {
-                  missingLabel.push('area: triage')
+                if (label.name.includes('area: ')) {
+                  missingArea = false
                 }
-                if (!label.name.includes('theme: ')) {
-                  missingLabel.push('theme: undefined')
+                if (label.name.includes('theme: ')) {
+                  missingTheme = false
                 }
-                github.issues.addLabels({...issue, labels: missingLabel})
               }
+              if (missingArea) {
+                missingLabel.push('area: triage')
+              }
+              if (missingTheme) {
+                missingLabel.push('theme: undefined')
+              }
+              github.issues.addLabels({...issue, labels: missingLabel})
             })
