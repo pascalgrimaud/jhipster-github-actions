@@ -17,7 +17,7 @@ jobs:
                 if (!label.name.includes('area: ')) {
                   missingLabel.push('area: triage')
                 }
-                if (!label.name.includes('theme: '))
+                if (!label.name.includes('theme: ')) {
                   missingLabel.push('theme: undefined')
                 }
                 if (missingLabel.length >= 1) {
